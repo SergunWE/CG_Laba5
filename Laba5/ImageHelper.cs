@@ -13,7 +13,7 @@ namespace Laba5
 	{
 		public static int[,] ImageToMatrix(Bitmap image)
 		{
-			int[,] matrix = new int[image.Width, image.Height];
+			int[,] matrix = new int[image.Height, image.Width];
 
 			int iStop = image.Width - 1;
 			int i = 0, j = 0;
@@ -26,7 +26,7 @@ namespace Laba5
 
 				while ((int)ptr < stopAddress)
 				{
-					matrix[i, j] = ptr[0] == 255 ? 1 : 0;
+					matrix[j, i] = ptr[0] == 255 ? 1 : 0;
 
 					if (i >= iStop)
 					{
@@ -45,49 +45,43 @@ namespace Laba5
 			return matrix;
 		}
 
-		private static int H;
-		private static int W;
-		private static bool isChar;
-
 		public static int[,] MatrixMarkup(int[,] img)
 		{
-			W = img.GetUpperBound(0) + 1;
-			H = img.Length / W;
+			int H = img.GetUpperBound(0) + 1;
+			int W = img.Length / H;
 
-			int[,] labels = new int[W, H];
+			int[,] labels = new int[H, W];
 
 			int L = 1;
 			for (int y = 0; y < H; y++)
 			{
 				for (int x = 0; x < W; x++)
 				{
-					isChar = false;
-					Fill(img, labels, x, y, L);
-					if (isChar)
+					if (Fill(img, labels, x, y, L, W, H))
 					{
 						L++;
 					}
-
 				}
 			}
 			return labels;
 		}
 
-		private static void Fill(int[,] img, int[,] labels, int x, int y, int L)
+		private static bool Fill(int[,] img, int[,] labels, int x, int y, int L, int W, int H)
 		{
-			if ((labels[x, y] == 0) && (img[x, y] == 1))
+			if ((labels[y, x] == 0) && (img[y, x] == 1))
 			{
-				isChar = true;
-				labels[x, y] = L;
+				labels[y, x] = L;
 				if (x > 0)
-					Fill(img, labels, x - 1, y, L);
+					Fill(img, labels, x - 1, y, L, W, H);
 				if (x < W - 1)
-					Fill(img, labels, x + 1, y, L);
+					Fill(img, labels, x + 1, y, L, W, H);
 				if (y > 0)
-					Fill(img, labels, x, y - 1, L);
+					Fill(img, labels, x, y - 1, L, W, H);
 				if (y < H - 1)
-					Fill(img, labels, x, y + 1, L);
+					Fill(img, labels, x, y + 1, L, W, H);
+				return true;
 			}
+			return false;
 		}
 	}
 }
