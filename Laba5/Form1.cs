@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
@@ -77,6 +78,39 @@ namespace Laba5
 				_imageManager.SetThreshold(value);
 			}
 			catch { }
+		}
+
+		private void morphologicalButton_Click(object sender, EventArgs e)
+		{
+			if (_imageManager.Image != null)
+			{
+				_imageManager.ApplyMorphologicalFilter();
+				pictureBox.Image = _imageManager.Image;
+			}
+		}
+
+		private void invertButton_Click(object sender, EventArgs e)
+		{
+			if (_imageManager.Image != null)
+			{
+				_imageManager.ApplyInvertFilter();
+				pictureBox.Image = _imageManager.Image;
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			var t = ImageHelper.ImageToMatrix(_imageManager.Image);
+			t = ImageHelper.MatrixMarkup(t);
+
+			for (int i = 0; i < t.GetUpperBound(0) + 1; i++)
+			{
+				for(int j = 0; j < t.Length / (t.GetUpperBound(0) + 1); j++)
+				{
+					Console.Write(t[i, j] + " ");
+				}
+				Console.WriteLine();
+			}
 		}
 	}
 }

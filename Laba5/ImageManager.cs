@@ -14,12 +14,15 @@ namespace Laba5
 
 		private IFilter _conversionFilter;
 		private IFilter _binarizationFilter;
+		private IFilter _invertFilter;
 		private IFilter _morphologicalFilter;
 
 		public ImageManager()
 		{
 			_conversionFilter = new GrayscaleFilter();
 			_binarizationFilter = new BinarizationFilter();
+			_invertFilter = new InvertMonoFilter();
+			_morphologicalFilter = new DilationFilter();
 		}
 
 		public void ApplyConversionFilter()
@@ -27,9 +30,19 @@ namespace Laba5
 			_conversionFilter.ApplyFilter(Image);
 		}
 
+		public void ApplyMorphologicalFilter()
+		{
+			_morphologicalFilter.ApplyFilter(Image);
+		}
+
 		public void ApplyBinarization()
 		{
-			Image = _binarizationFilter.ApplyFilter(Image);
+			_binarizationFilter.ApplyFilter(Image);
+		}
+
+		public void ApplyInvertFilter()
+		{
+			_invertFilter.ApplyFilter(Image);
 		}
 
 		public void SetThreshold(int value)

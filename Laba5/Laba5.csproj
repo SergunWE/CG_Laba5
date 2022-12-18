@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinarizationFilter.cs" />
+    <Compile Include="CharDatabase.cs" />
+    <Compile Include="CharInfo.cs" />
+    <Compile Include="DilationFilter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,7 +60,9 @@
     </Compile>
     <Compile Include="GrayscaleFilter.cs" />
     <Compile Include="IFilter.cs" />
+    <Compile Include="ImageHelper.cs" />
     <Compile Include="ImageManager.cs" />
+    <Compile Include="InvertMonoFilter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

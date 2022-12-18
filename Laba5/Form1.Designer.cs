@@ -33,6 +33,9 @@
 			this.conversionButton = new System.Windows.Forms.Button();
 			this.buttonBinarization = new System.Windows.Forms.Button();
 			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.morphologicalButton = new System.Windows.Forms.Button();
+			this.invertButton = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -84,11 +87,44 @@
 			this.textBox1.Text = "128";
 			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
+			// morphologicalButton
+			// 
+			this.morphologicalButton.Location = new System.Drawing.Point(444, 128);
+			this.morphologicalButton.Name = "morphologicalButton";
+			this.morphologicalButton.Size = new System.Drawing.Size(344, 23);
+			this.morphologicalButton.TabIndex = 5;
+			this.morphologicalButton.Text = "Apply Morphological Filter";
+			this.morphologicalButton.UseVisualStyleBackColor = true;
+			this.morphologicalButton.Click += new System.EventHandler(this.morphologicalButton_Click);
+			// 
+			// invertButton
+			// 
+			this.invertButton.Location = new System.Drawing.Point(444, 99);
+			this.invertButton.Name = "invertButton";
+			this.invertButton.Size = new System.Drawing.Size(344, 23);
+			this.invertButton.TabIndex = 6;
+			this.invertButton.Text = "Apply Invert Filter";
+			this.invertButton.UseVisualStyleBackColor = true;
+			this.invertButton.Click += new System.EventHandler(this.invertButton_Click);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(444, 157);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(344, 23);
+			this.button1.TabIndex = 7;
+			this.button1.Text = "Apply Morphological Filter";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.button1);
+			this.Controls.Add(this.invertButton);
+			this.Controls.Add(this.morphologicalButton);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.buttonBinarization);
 			this.Controls.Add(this.conversionButton);
@@ -109,6 +145,9 @@
 		private System.Windows.Forms.Button conversionButton;
 		private System.Windows.Forms.Button buttonBinarization;
 		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Button morphologicalButton;
+		private System.Windows.Forms.Button invertButton;
+		private System.Windows.Forms.Button button1;
 	}
 }
 
