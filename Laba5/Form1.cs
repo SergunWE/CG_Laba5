@@ -98,19 +98,25 @@ namespace Laba5
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void Markbutton_Click(object sender, EventArgs e)
 		{
-			var t = ImageHelper.ImageToMatrix(_imageManager.Image);
-			t = ImageHelper.MatrixMarkup(t);
+			CharDatabase db = new CharDatabase(_imageManager.Image, "ZYXWVUTSRQPONMLKJIHGFEDCBA");
 
-			for (int i = 0; i < t.GetUpperBound(0) + 1; i++)
-			{
-				for(int j = 0; j < t.Length / (t.GetUpperBound(0) + 1); j++)
-				{
-					Console.Write(t[i, j] + " ");
-				}
-				Console.WriteLine();
-			}
+			//var t = ImageHelper.ImageToMatrix(_imageManager.Image);
+			//t = ImageHelper.MatrixMarkup(t);
+			ImageHelper.OutlineColorChars(_imageManager.Image, db.Matrix);
+			pictureBox.Image = _imageManager.Image;
+
+			Console.WriteLine(ImageHelper.LatestCharNumber);
+
+			//for (int i = 0; i < t.GetUpperBound(0) + 1; i++)
+			//{
+			//	for(int j = 0; j < t.Length / (t.GetUpperBound(0) + 1); j++)
+			//	{
+			//		Console.Write(t[i, j] + " ");
+			//	}
+			//	Console.WriteLine();
+			//}
 		}
 	}
 }
