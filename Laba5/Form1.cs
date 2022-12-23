@@ -16,10 +16,12 @@ namespace Laba5
 	public partial class Form1 : Form
 	{
 		private readonly ImageManager _imageManager;
+		private readonly CharDatabase _database;
 
 		public Form1()
 		{
 			_imageManager = new ImageManager();
+			_database = new CharDatabase();
 			InitializeComponent();
 		}
 
@@ -100,23 +102,39 @@ namespace Laba5
 
 		private void Markbutton_Click(object sender, EventArgs e)
 		{
-			CharDatabase db = new CharDatabase(_imageManager.Image, "ZYXWVUTSRQPONMLKJIHGFEDCBA");
+			//CharDatabase db = new CharDatabase(_imageManager.Image, "ZYXWVUTSRQPONMLKJIHGFEDCBA");
 
 			//var t = ImageHelper.ImageToMatrix(_imageManager.Image);
 			//t = ImageHelper.MatrixMarkup(t);
-			ImageHelper.OutlineColorChars(_imageManager.Image, db.Matrix);
+			var matrix = ImageHelper.MatrixMarkup(ImageHelper.ImageToMatrix(_imageManager.Image));
+			ImageHelper.OutlineColorChars(_imageManager.Image, matrix);
 			pictureBox.Image = _imageManager.Image;
 
-			Console.WriteLine(ImageHelper.LatestCharNumber);
+			Console.WriteLine(ImageHelper.LatestCharNumber - 1);
 
-			//for (int i = 0; i < t.GetUpperBound(0) + 1; i++)
-			//{
-			//	for(int j = 0; j < t.Length / (t.GetUpperBound(0) + 1); j++)
-			//	{
-			//		Console.Write(t[i, j] + " ");
-			//	}
-			//	Console.WriteLine();
-			//}
+			string result = "";
+			for (int i = 1; i <= ImageHelper.LatestCharNumber; i++)
+			{
+				var p = ImageHelper.GetCharPositions(matrix, i);
+
+				Bitmap charImage = new Bitmap(p.Item2.X - p.Item1.X, p.Item2.Y - p.Item1.Y);
+				using (Graphics g = Graphics.FromImage(charImage))
+				{
+					g.DrawImage(_imageManager.Image, 0, 0, new Rectangle(p.Item1, new Size(p.Item2.X - p.Item1.X, p.Item2.Y - p.Item1.Y)), GraphicsUnit.Pixel);
+				}
+				charImage = new Bitmap(charImage, 8, 8);
+				var c = ImageHelper.ImageToMatrix(charImage);
+				result += _database.GetChar(c);
+			}
+			label1.Text = result;
+		}
+
+		private void AddDBbutton_Click(object sender, EventArgs e)
+		{
+			if(textBox2.Text.Length > 0)
+			{
+				_database.AddImage(_imageManager.Image, textBox2.Text);
+			}
 		}
 	}
 }

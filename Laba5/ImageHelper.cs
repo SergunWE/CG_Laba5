@@ -53,6 +53,7 @@ namespace Laba5
 			int W = img.Length / H;
 
 			int[,] labels = new int[H, W];
+			LatestCharNumber = 0;
 
 			for (int y = 0; y < H; y++)
 			{

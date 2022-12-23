@@ -36,6 +36,9 @@
 			this.morphologicalButton = new System.Windows.Forms.Button();
 			this.invertButton = new System.Windows.Forms.Button();
 			this.Markbutton = new System.Windows.Forms.Button();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.AddDBbutton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -117,11 +120,40 @@
 			this.Markbutton.UseVisualStyleBackColor = true;
 			this.Markbutton.Click += new System.EventHandler(this.Markbutton_Click);
 			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(444, 418);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(185, 20);
+			this.textBox2.TabIndex = 8;
+			// 
+			// AddDBbutton
+			// 
+			this.AddDBbutton.Location = new System.Drawing.Point(636, 414);
+			this.AddDBbutton.Name = "AddDBbutton";
+			this.AddDBbutton.Size = new System.Drawing.Size(152, 23);
+			this.AddDBbutton.TabIndex = 9;
+			this.AddDBbutton.Text = "Add images to the database";
+			this.AddDBbutton.UseVisualStyleBackColor = true;
+			this.AddDBbutton.Click += new System.EventHandler(this.AddDBbutton_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(444, 285);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(35, 13);
+			this.label1.TabIndex = 10;
+			this.label1.Text = "label1";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.AddDBbutton);
+			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.Markbutton);
 			this.Controls.Add(this.invertButton);
 			this.Controls.Add(this.morphologicalButton);
@@ -148,6 +180,9 @@
 		private System.Windows.Forms.Button morphologicalButton;
 		private System.Windows.Forms.Button invertButton;
 		private System.Windows.Forms.Button Markbutton;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Button AddDBbutton;
+		private System.Windows.Forms.Label label1;
 	}
 }
 
