@@ -122,7 +122,7 @@ namespace Laba5
 				{
 					g.DrawImage(_imageManager.Image, 0, 0, new Rectangle(p.Item1, new Size(p.Item2.X - p.Item1.X, p.Item2.Y - p.Item1.Y)), GraphicsUnit.Pixel);
 				}
-				charImage = new Bitmap(charImage, 8, 8);
+				charImage = new Bitmap(charImage, 16, 16);
 				var c = ImageHelper.ImageToMatrix(charImage);
 				result += _database.GetChar(c);
 			}

@@ -31,19 +31,36 @@ namespace Laba5
 				{
 					g.DrawImage(image, 0, 0, new Rectangle(p.Item1, new Size(p.Item2.X - p.Item1.X, p.Item2.Y - p.Item1.Y)), GraphicsUnit.Pixel);
 				}
-				charImage = new Bitmap(charImage, 8, 8);
-				var c = ImageHelper.ImageToMatrix(charImage);
-				_chars.Add(charsString[i - 1], c);
 
-				for (int z = 0; z < c.GetUpperBound(0) + 1; z++)
+				//var b = ImageHelper.ImageToMatrix(charImage);
+
+				//for (int z = 0; z < b.GetUpperBound(0) + 1; z++)
+				//{
+				//	for (int j = 0; j < b.Length / (b.GetUpperBound(0) + 1); j++)
+				//	{
+				//		Console.Write(b[z, j] + " ");
+				//	}
+				//	Console.WriteLine();
+				//}
+				//Console.WriteLine("-----------");
+
+
+
+
+
+				var compressedImage = new Bitmap(charImage, new Size(16,16));
+				var compressedMatrix = ImageHelper.ImageToMatrix(compressedImage);
+				_chars.Add(charsString[i - 1], compressedMatrix);
+
+				for (int z = 0; z < compressedMatrix.GetUpperBound(0) + 1; z++)
 				{
-					for (int j = 0; j < c.Length / (c.GetUpperBound(0) + 1); j++)
+					for (int j = 0; j < compressedMatrix.Length / (compressedMatrix.GetUpperBound(0) + 1); j++)
 					{
-						Console.Write(c[z, j] + " ");
+						Console.Write(compressedMatrix[z, j] + " ");
 					}
 					Console.WriteLine();
 				}
-				Console.WriteLine("-----------");
+				Console.WriteLine("-----------" + charsString[i - 1]);
 			}
 		}
 
@@ -58,9 +75,9 @@ namespace Laba5
 			foreach (var charDB in _chars)
 			{
 				int currentCoincidence = 0;
-				for (int i = 0; i < 8; i++)
+				for (int i = 0; i < 16; i++)
 				{
-					for(int j = 0; j < 8; j++)
+					for(int j = 0; j < 16; j++)
 					{
 						if (charMatrix[i,j] != 0 && charDB.Value[i, j] == 1)
 						{

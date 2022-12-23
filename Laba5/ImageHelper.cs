@@ -55,9 +55,9 @@ namespace Laba5
 			int[,] labels = new int[H, W];
 			LatestCharNumber = 0;
 
-			for (int y = 0; y < H; y++)
+			for (int x = 0; x < W; x++)
 			{
-				for (int x = 0; x < W; x++)
+				for (int y = 0; y < H; y++)
 				{
 					if (Fill(img, labels, x, y, LatestCharNumber + 1, W, H))
 					{
@@ -110,14 +110,14 @@ namespace Laba5
 			if ((labels[y, x] == 0) && (img[y, x] == 1))
 			{
 				labels[y, x] = L;
-				if (x > 0)
-					Fill(img, labels, x - 1, y, L, W, H);
-				if (x < W - 1)
-					Fill(img, labels, x + 1, y, L, W, H);
 				if (y > 0)
 					Fill(img, labels, x, y - 1, L, W, H);
 				if (y < H - 1)
 					Fill(img, labels, x, y + 1, L, W, H);
+				if (x > 0)
+					Fill(img, labels, x - 1, y, L, W, H);
+				if (x < W - 1)
+					Fill(img, labels, x + 1, y, L, W, H);
 				return true;
 			}
 			return false;
