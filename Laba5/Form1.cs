@@ -110,7 +110,7 @@ namespace Laba5
 			ImageHelper.OutlineColorChars(_imageManager.Image, matrix);
 			pictureBox.Image = _imageManager.Image;
 
-			Console.WriteLine(ImageHelper.LatestCharNumber - 1);
+			Console.WriteLine(ImageHelper.LatestCharNumber);
 
 			string result = "";
 			for (int i = 1; i <= ImageHelper.LatestCharNumber; i++)

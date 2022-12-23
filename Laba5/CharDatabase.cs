@@ -32,25 +32,26 @@ namespace Laba5
 					g.DrawImage(image, 0, 0, new Rectangle(p.Item1, new Size(p.Item2.X - p.Item1.X, p.Item2.Y - p.Item1.Y)), GraphicsUnit.Pixel);
 				}
 
-				//var b = ImageHelper.ImageToMatrix(charImage);
+				var b = ImageHelper.ImageToMatrix(charImage);
 
-				//for (int z = 0; z < b.GetUpperBound(0) + 1; z++)
-				//{
-				//	for (int j = 0; j < b.Length / (b.GetUpperBound(0) + 1); j++)
-				//	{
-				//		Console.Write(b[z, j] + " ");
-				//	}
-				//	Console.WriteLine();
-				//}
-				//Console.WriteLine("-----------");
-
-
+				for (int z = 0; z < b.GetUpperBound(0) + 1; z++)
+				{
+					for (int j = 0; j < b.Length / (b.GetUpperBound(0) + 1); j++)
+					{
+						Console.Write(b[z, j] + " ");
+					}
+					Console.WriteLine();
+				}
+				Console.WriteLine("-----------");
 
 
 
-				var compressedImage = new Bitmap(charImage, new Size(16,16));
+
+
+				var compressedImage = new Bitmap(charImage, new Size(16, 16));
 				var compressedMatrix = ImageHelper.ImageToMatrix(compressedImage);
-				_chars.Add(charsString[i - 1], compressedMatrix);
+
+				_chars[charsString[i - 1]] = compressedMatrix;
 
 				for (int z = 0; z < compressedMatrix.GetUpperBound(0) + 1; z++)
 				{
@@ -68,26 +69,22 @@ namespace Laba5
 		{
 			char currentChar = '-';
 			int coincidence = -1;
-
-			
-
-
 			foreach (var charDB in _chars)
 			{
 				int currentCoincidence = 0;
 				for (int i = 0; i < 16; i++)
 				{
-					for(int j = 0; j < 16; j++)
+					for (int j = 0; j < 16; j++)
 					{
-						if (charMatrix[i,j] != 0 && charDB.Value[i, j] == 1)
+						if (charMatrix[i, j] == 1 && charDB.Value[i, j] == 1)
 						{
 							currentCoincidence++;
 						}
 					}
 				}
-				if(currentCoincidence > coincidence)
+				if (currentCoincidence > coincidence)
 				{
-					coincidence= currentCoincidence;
+					coincidence = currentCoincidence;
 					currentChar = charDB.Key;
 				}
 				Console.WriteLine($"{charDB.Key} - {currentCoincidence}");

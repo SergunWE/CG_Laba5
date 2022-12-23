@@ -12,10 +12,7 @@ namespace Laba5
 {
 	internal class BinarizationFilter : IFilter
 	{
-		public int Threshold {get; set;}
-
-		private Color _blackColor = Color.Black;
-		private Color _whiteColor = Color.White;
+		public int Threshold { get; set; }
 
 		public BinarizationFilter()
 		{
@@ -37,7 +34,7 @@ namespace Laba5
 					*ptr = (byte)(value);
 					ptr[1] = *ptr;
 					ptr[2] = *ptr;
-					ptr+=4;
+					ptr += 4;
 				}
 			}
 			output.UnlockBits(bmpData);

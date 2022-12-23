@@ -75,7 +75,7 @@ namespace Laba5
 				var t = GetCharPositions(labels, i);
 				using (Graphics g = Graphics.FromImage(image))
 				{
-					g.DrawRectangle(new Pen(Color.FromKnownColor(KnownColor.Red), 1), 
+					g.DrawRectangle(new Pen(Color.FromKnownColor(KnownColor.Pink), 2), 
 						new Rectangle(t.Item1, new Size(t.Item2.X - t.Item1.X, t.Item2.Y - t.Item1.Y)));
 				}
 			}
